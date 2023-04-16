@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "creation": "2023-04-11 10:42:26.722357",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "brand_local",
+  "percent"
+ ],
+ "fields": [
+  {
+   "fieldname": "brand_local",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Brand",
+   "options": "Brand",
+   "reqd": 1
+  },
+  {
+   "fieldname": "percent",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Commission Rate(%)",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-04-15 14:42:44.324882",
+ "modified_by": "Administrator",
+ "module": "erpnext commission report customzied",
+ "name": "Brand commission local",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
