@@ -42,9 +42,9 @@ frappe.query_reports["sales person commission"] = {
 			"fieldname": "group_by",
 			"label": __("Group By"),
 			"fieldtype": "Select",
-			"options": "Invoice",
+			"options": "Invoice\nItem Code\nItem Group\nBrand\nWarehouse\nCustomer\nCustomer Group\nTerritory\nSales Person\nProject\nMonthly\nPayment Term",
 			"default": "Invoice",
-		    "hidden": 1
+//		    "hidden": 1
 		},
 		{
 			"fieldname": "item_group",
