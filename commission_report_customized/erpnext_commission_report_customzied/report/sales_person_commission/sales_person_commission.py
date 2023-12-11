@@ -42,12 +42,12 @@ def execute(filters=None):
 			employee_id2 = None
 	# print(f"\n\n\n current user is : {employee_id}")
 	# print(f"\n\n\n\ncurrent filter is : {employee_id2}")
-	if employee_id != employee_id2 or "Sales Master Manager" or "Auditor" or "Accounts Manager" not in frappe.get_roles():
-		frappe.throw("Only Sales Master Managers are allowed to run this report.")
-		return None
-	if filters.group_by != "Invoice" or "Sales Master Manager" or "Auditor" or "Accounts Manager" not in frappe.get_roles():
-		frappe.throw("Only Sales Master Managers are allowed to run this report.")
-		return None
+#	if employee_id != employee_id2 or "Sales Master Manager" or "Auditor" or "Accounts Manager" not in frappe.get_roles():
+#		frappe.throw("Only Sales Master Managers are allowed to run this report.")
+#		return None
+#	if filters.group_by != "Invoice" or "Sales Master Manager" or "Auditor" or "Accounts Manager" not in frappe.get_roles():
+#		frappe.throw("Only Sales Master Managers are allowed to run this report.")
+#		return None
 	gross_profit_data = GrossProfitGenerator(filters)
 
 	data = []
