@@ -470,6 +470,8 @@ class GrossProfitGenerator(object):
 		if grouped_by_invoice:
 			buying_amount = 0
 			local_commission_amount = 0
+		person = frappe.get_doc('Sales Person', self.filters.sales_person)
+		d1 = person.as_dict()
 
 		for row in reversed(self.si_list):
 			if self.filters.get("group_by") == "Monthly":
@@ -533,15 +535,23 @@ class GrossProfitGenerator(object):
 				)
 			else:
 				row.gross_profit_percent = 0.0
-			_brand_coommission_local = frappe.get_value("Brand commission local",
-														filters={
-															"parenttype": "Sales Person",
-															"parent": self.filters.sales_person,
-															"parentfield": "brand_commission_local",
-															"brand_local": row.brand
-														},
-														fieldname="percent"
-														)
+			# _brand_coommission_local = frappe.get_value("Brand commission local",
+			# 											filters={
+			# 												"parenttype": "Sales Person",
+			# 												"parent": self.filters.sales_person,
+			# 												"parentfield": "brand_commission_local",
+			# 												"brand_local": row.brand
+			# 											},
+			# 											fieldname="percent"
+			# 											)
+			custom_commission_table_records = d1.get('custom_commission_table', [])
+			filtered_records = [record for record in custom_commission_table_records if record.get('brand_local') == row.brand]
+			percent_values = [record.get('percent') for record in filtered_records]
+			_brand_coommission_local = None
+			for percent_value in percent_values:
+				# print(f"{row.brand}'s value is :{percent_value}")
+				_brand_coommission_local = percent_value
+
 			if _brand_coommission_local:
 				row.brand_commission_rate = _brand_coommission_local
 
